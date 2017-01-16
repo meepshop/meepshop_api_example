@@ -5,15 +5,55 @@ query.user.create = {
     ){
       storeId
       email
+      name
+      gender
+      platform{
+        facebook{
+          id
+        }
+      }
+      birthday{
+        day
+        month
+        year
+      }
+      additionalInfo{
+        mobile
+        tel
+        address{
+          streetAddress
+        }
+      }
+      createdOn
+      updatedOn
+      _error
     }
   }`,
   variables:{
     search: [
       {
         type: 'SHOPPER',
-        email: 'sunny@meepshop.com',
+        email: 'test@meepshop.com',
         password: '123456',
-        name: 'sunny01'
+        name: 'test',
+        gender: 0,
+        platform: {
+          facebook: {
+            id: '124346556udgvsdfftu56' 
+          }
+        },
+        birthday: {
+          day: 1,
+          month: 1,
+          year: 2017
+        },
+        additionalInfo: {
+          mobile: '0911111111',
+          tel: '02-11111111',
+          address: {
+            streetAddress: 'Taiwan, Taipei, 100, xxx street'
+          }
+        }
       },
     ]
   }
