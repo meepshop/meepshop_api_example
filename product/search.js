@@ -4,28 +4,46 @@ query.product.search = {
       search: $search
     ){
       data {
-          id,
-          title{
-            zh_TW,
-          },
-          variants {
-            id,
-            sku
-          },
-          specs {
-            id,
-            title {
-              zh_TW,
-              en_US
-            }
-          },
-          status,
-          mainFileInfo{
+        id
+        title{
+          zh_TW
+        }
+        description{
+          zh_TW
+        }
+        variants {
+          id
+          sku
+          listPrice
+          retailPrice
+          stock
+          cost
+          vendorSku
+          maxPurchaseLimit
+          minPurchaseItems
+          status
+          specs{
             id
-            linkId
-            type
+            specId
+            title{
+              zh_TW
+            }
           }
         }
+        specs {
+          id
+          title {
+            zh_TW
+          }
+        }
+        status
+        galleryInfo{
+          mainId
+          media
+        }
+        createdOn
+        updatedOn
+      }
       total
     }
   }`,
@@ -34,7 +52,12 @@ query.product.search = {
       size: 2,
       from: 0,
       filter: {
-        and: []
+        and: [
+          // {
+          //   type: 'ids',
+          //   ids: ['deb658a1-c659-11e6-812c-d593dfa0e125']
+          // }
+        ]
       },
       showVariants: true,
       showMainFile: true,

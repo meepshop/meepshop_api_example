@@ -5,9 +5,30 @@ query.user.search = {
     ){
       data{
         id
+        storeId
+        type
         email
         name
-        type
+        gender
+        platform{
+          facebook{
+            id
+          }
+        }
+        birthday{
+          day
+          month
+          year
+        }
+        additionalInfo{
+          mobile
+          tel
+          address{
+            streetAddress
+          }
+        }
+        createdOn
+        updatedOn
       }
       total
     }
