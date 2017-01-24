@@ -4,5 +4,6 @@ var query = {
   product: {},
   shipment: {},
   store: {},
-  user: {}
+  user: {},
+  userPoints: {}
 }
