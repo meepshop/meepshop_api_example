@@ -19,8 +19,8 @@ query.userPoints.update = {
   variables:{
     search: [
       {
-        id: 'aa457804-382c-4b03-bc03-4a84c45e156f',
-        status: 0
+        id: '77a1c267-ba6a-498d-8f20-9a7d6c8bab55',
+        status: 1
       }
     ]
   }

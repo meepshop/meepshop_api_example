@@ -32,7 +32,7 @@ query.user.update = {
   variables:{
     search: [
       {
-        id: 'bec40a86-3a48-4ded-bfd5-993bc66ebad7',
+        id: '49a4413d-7570-472b-89d9-ec0c8b19f9a9',
         name: 'test2',
         gender: 0,
         platform: {

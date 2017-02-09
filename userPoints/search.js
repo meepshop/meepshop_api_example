@@ -27,7 +27,7 @@ query.userPoints.search = {
           {
             type: 'exact',
             field: 'userId',
-            query: '5da8aa6b-79ee-4e2d-b2a9-657dbd554a2f'
+            query: '49a4413d-7570-472b-89d9-ec0c8b19f9a9'
           }
         ]
       },

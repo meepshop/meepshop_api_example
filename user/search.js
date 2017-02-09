@@ -39,6 +39,11 @@ query.user.search = {
       from: 0,
       filter: {
         and: [
+          {
+            type : "exact",
+            field: "type",
+            query: "shopper"
+          },
           // {
           //   type: 'query_string',
           //   fields: ['email'],
