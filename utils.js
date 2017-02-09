@@ -1,13 +1,13 @@
 function login (callback) {
   var body = {
-    email: 'annie@meepshop.com', // 請輸入帳號
+    email: 'apitest@meepshop.com', // 請輸入帳號
     password: '123456'           // 請輸入密碼
   }
   var request = new XMLHttpRequest()
 
-  request.open('POST', 'http://api.meepshop.tw/auth/login', true)
+  request.open('POST', 'http://api.stage.meepcloud.com/auth/login', true)
   request.setRequestHeader('Content-Type', 'application/json')
-  request.setRequestHeader('x-meepshop-domain', 'admin.meepshop.tw')
+  request.setRequestHeader('x-meepshop-domain', 'admin.stage.meepcloud.com')
   request.send(JSON.stringify(body))
 
   request.onload = function () {
@@ -22,9 +22,9 @@ function login (callback) {
 function graphql(token, query, callback) {
   var request = new XMLHttpRequest()
 
-  request.open('POST', 'http://api.meepshop.tw/graphql', true)
+  request.open('POST', 'http://api.stage.meepcloud.com/graphql', true)
   request.setRequestHeader('Content-Type', 'application/json')
-  request.setRequestHeader('x-meepshop-domain', 'admin.meepshop.tw')
+  request.setRequestHeader('x-meepshop-domain', 'admin.stage.meepcloud.com')
   request.setRequestHeader('x-meepshop-authorization-token', token)
   request.send(JSON.stringify(query))
 

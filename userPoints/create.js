@@ -19,7 +19,7 @@ query.userPoints.create = {
   variables:{
     search: [
       {
-        userId: '5da8aa6b-79ee-4e2d-b2a9-657dbd554a2f',
+        userId: '49a4413d-7570-472b-89d9-ec0c8b19f9a9',
         class: 99,
         points: 124,
         startTime: 1476783371,
