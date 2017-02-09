@@ -12,6 +12,5 @@ ready(() => {
     }else{
       document.querySelector('#json').innerHTML = JSON.stringify(query[subject][action], null, 2)
     }
-    
   }
 })
