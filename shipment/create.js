@@ -3,11 +3,34 @@ query.shipment.create = {
     createStoreShipmentList(
       createStoreShipmentList: $search
     ){
-      id,
+      id
       title{
-        zh_TW,
-        en_US
-      },
+        zh_TW
+      }
+      description{
+        zh_TW
+      }
+      template
+      maxPurchase
+      minPurchase
+      priceRule{
+        method
+        fix
+        count{
+          price
+          min
+          max
+        }
+        orderAmount{
+          price
+          min
+          max
+        }
+      }
+      searchLink
+      status
+      createdOn
+      updatedOn
       _error
     }
   }`,
@@ -32,13 +55,13 @@ query.shipment.create = {
           'weight': []
         },
         'title': {
-            'zh_TW': '1231'
+            'zh_TW': 'shipment 1'
         },
         'description': {
-            'zh_TW': '123'
+            'zh_TW': 'shipment description'
         },
-        'minPurchase': '2',
-        'maxPurchase': '3',
+        'minPurchase': 0,
+        'maxPurchase': 10000,
       }
     ]
   }

@@ -1,79 +1,74 @@
 query.order.update = {
-  query: `query Q($search: searchInputObjectType){
-    getOrderList(
-      search: $search
+  query: `mutation M($search: [UpdateOrder]){
+    updateOrderList(
+      updateOrderList: $search
     ){
-      data{
-        id,
-        categories{
-          products{
-            title{
-              zh_TW
-            }
-            sku
-            totalPrice
-            quantity
-            cost
+      id
+      categories{
+        products{
+          title{
+            zh_TW
           }
-        }
-        orderNo
-        paymentInfo{
-          status
-          price
-        }
-        shipmentInfo{
-          status
-          price
-        }
-        userInfo{
-          name
-          email
-          mobile
-          tel
-          memberGroupId
-        }
-        status
-        invoiceInfo{
-          invoiceType
-          invoiceTitle
-          invoiceVAT
-          donateUnit
-          streetAddress
-          vehicleType
-          citizenDigitalCertificate
-          mobileBarcode
-        }
-        priceInfo{
-          currency
-          discount
-          orderDiscount
-          productDiscountTotal
-          shipmentFee
-          total
+          sku
+          totalPrice
+          quantity
           cost
-          adjust
-          productPrice
-          productQuantity
         }
-        note
       }
-      total
+      orderNo
+      paymentInfo{
+        status
+        price
+      }
+      shipmentInfo{
+        status
+        price
+      }
+      userInfo{
+        name
+        email
+        mobile
+        tel
+        memberGroupId
+      }
+      status
+      invoiceInfo{
+        invoiceType
+        invoiceTitle
+        invoiceVAT
+        donateUnit
+        streetAddress
+        vehicleType
+        citizenDigitalCertificate
+        mobileBarcode
+      }
+      priceInfo{
+        currency
+        cost
+        discount
+        total
+        adjust
+        return
+        actualTotal
+        orderDiscount
+        productPrice
+        productQuantity
+        productDiscount
+        shipmentFee
+        shipmentDiscount
+      }
+      note
+      _error
     }
   }`,
   variables:{
-    search: {
-      size: 10,
-      from: 0,
-      filter: {
-        and: [
-        ]
-      },
-      sort: [
-        {
-          field: 'createdOn',
-          order: 'desc'
+    search: [
+      {
+        id: 'e72bba40-04af-11e7-9639-fd1c3ec64efb',
+        shipmentInfo: {
+          status: 2
         }
-      ]
-    }
+      }
+    ]
   }
 };

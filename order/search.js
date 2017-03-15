@@ -4,7 +4,7 @@ query.order.search = {
       search: $search
     ){
       data{
-        id,
+        id
         categories{
           products{
             title{
@@ -45,15 +45,18 @@ query.order.search = {
         }
         priceInfo{
           currency
-          discount
-          orderDiscount
-          productDiscountTotal
-          shipmentFee
-          total
           cost
+          discount
+          total
           adjust
+          return
+          actualTotal
+          orderDiscount
           productPrice
           productQuantity
+          productDiscount
+          shipmentFee
+          shipmentDiscount
         }
         note
       }

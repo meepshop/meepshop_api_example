@@ -4,14 +4,25 @@ query.payment.search = {
       search: $search
     ){
       data {
-          id,
-          title{
-            zh_TW,
-          },
-          template
-          maxPurchase
-          minPurchase
+        id
+        title{
+          zh_TW
         }
+        description{
+          zh_TW
+        }
+        template
+        maxPurchase
+        minPurchase
+        priceRule{
+          method
+          value
+        }
+        excludeShipping
+        status
+        createdOn
+        updatedOn
+      }
       total
     }
   }`,

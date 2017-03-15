@@ -3,7 +3,7 @@ var query = {
   payment: {},
   product: {},
   shipment: {},
-  store: {},
+  // store: {},
   user: {},
   userPoints: {}
 }

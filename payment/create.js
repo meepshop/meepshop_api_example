@@ -4,13 +4,24 @@ query.payment.create = {
       createStorePaymentList: $search
     ){
       id
-      storeId
       title{
         zh_TW
-        en_US
+      }
+      description{
+        zh_TW
       }
       template
+      maxPurchase
+      minPurchase
+      priceRule{
+        method
+        value
+      }
+      excludeShipping
       status
+      createdOn
+      updatedOn
+      _error
     }
   }`,
   variables:{
@@ -19,7 +30,7 @@ query.payment.create = {
         'maxPurchase': 10000,
         'minPurchase': 0,
         'title': {
-            'zh_TW': 'oooo0721',
+            'zh_TW': 'payment 1',
             'en_US': ''
         },
         'template': 'custom',
