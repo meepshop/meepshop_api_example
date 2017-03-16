@@ -58,7 +58,6 @@ query.user.schema = {
     "additionalInfo": {
       "type": "object",
       "description": "會員的聯絡資訊",
-      "elasticsearch": true,
       "properties": {
         "tel": {
           "type": "string",
@@ -92,12 +91,105 @@ query.user.schema = {
         }
       }
     },
+    "recipientData": {
+      "type": "array",
+      "description": "收件人資料, 紀錄會員常用的收件人資訊",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "收件人資料編號"
+          },
+          "email": {
+            "type": "string",
+            "description": "收件人的email"
+          },
+          "name": {
+            "type": "string",
+            "description": "收件人的姓名"
+          },
+          "mobile": {
+            "type": "string",
+            "description": "收件人的手機"
+          },
+          "tel": {
+            "type": "string",
+            "description": "收件人的電話"
+          },
+          "address": {
+            "type": "object",
+            "description": "收件人地址相關資料",
+            "properties": {
+              "country": {
+                "type": "string",
+                "description": "收件人所在國家",
+              },
+              "postalCode": {
+                "type": "string",
+                "description": "收件人郵遞區號",
+              },
+              "streetAddress": {
+                "type": "string",
+                "description": "收件人完整的地址(country + city + county + street)"
+              }
+            },
+            "required": [
+              "country",
+              "streetAddress"
+            ]
+          }
+        }
+      }
+    },
     "groupId": {
       "type": "string",
-      "description": "會員等級編號"
+      "description": "會員最新的等級編號"
     },
     "group": {
       "type": "array",
+      "description": "會員等級變動紀錄",
+      "items": {
+        "type": "object",
+        "properties": {
+          "expireDate": {
+            "type": "integer",
+            "description": "等級到期時間"
+          },
+          "memberGroupId": {
+            "type": "string",
+            "description": "會員等級編號"
+          },
+          "startDate": {
+            "type": "integer",
+            "description": "等級開始時間"
+          },
+          "unlimitedDate": {
+            "type": "boolean",
+            "description": "等級是否為無期限, false:有期限(會判斷expireDate); true:無期限"
+          }
+        },
+        "required": [
+          "memberGroupId",
+          "startDate"
+        ]
+      }
+    },
+    "platform": {
+      "type": "object",
+      "description": "會員來源的相關資訊",
+      "properties": {
+        "facebook": {
+          "type": "object",
+          "description": "來自fb的會員資訊",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "fb Id"
+            }
+          }
+        }
+      }
     },
     "createdOn": {
       "type": "integer",
@@ -119,6 +211,9 @@ query.user.schema = {
   "required": [
     "id",
     "storeId",
+    "type",
+    "email",
+    "password",
     "createdOn",
     "createdBy",
     "updatedOn",
