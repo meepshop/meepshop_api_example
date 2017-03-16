@@ -7,13 +7,36 @@ query.order.search = {
         id
         categories{
           products{
+            productId
+            variantId
             title{
               zh_TW
             }
+            type
             sku
+            vendorSku
+            listPrice
+            retailPrice
             totalPrice
+            discountPrice
             quantity
-            cost
+            specs{
+              specId
+              title{
+                zh_TW
+              }
+            }
+            galleryInfo{
+              mainId
+              media
+            }
+            activityInfo{
+              plugin
+              title{
+                zh_TW
+              }
+              discountPrice
+            }
           }
         }
         orderNo

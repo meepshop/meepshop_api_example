@@ -41,6 +41,138 @@ query.order.schema = {
         }
       }
     },
+    "categories": {
+      "type": "object",
+      "description": "訂單商品的分類資訊(依多物流分群)",
+      "properties": {
+        "products": {
+          "type": "array",
+          "description": "訂單商品購買資訊",
+          "items": {
+            "type": "object",
+            "properties": {
+              "productId": {
+                "type": "string",
+                "description": "系統的商品編號"
+              },
+              "variantId": {
+                "type": "string",
+                "description": "系統的規格編號"
+              },
+              "title": {
+                "type": "object",
+                "description": "商品名稱",
+                "properties": {
+                  "zh_TW": {
+                    "type": "string",
+                    "description": "繁體中文名稱"
+                  }
+                }
+              },
+              "type": {
+                "type": "string",
+                "description": "表示此為購買的商品(product)或是為贈品(gift)"
+              },
+              "sku": {
+                "type": "string",
+                "description": "店家所使用的商品規格編號"
+              },
+              "vendorSku": {
+                "type": "string",
+                "description": ""
+              },
+              "listPrice": {
+                "type": "string",
+                "description": ""
+              },
+              "retailPrice": {
+                "type": "string",
+                "description": ""
+              },
+              "totalPrice": {
+                "type": "number",
+                "description": "購買金額"
+              },
+              "discountPrice": {
+                "type": "number",
+                "description": ""
+              },
+              "quantity": {
+                "type": "integer",
+                "description": "購買數量"
+              },
+              "specs": {
+                "type": "array",
+                "description": "商品規格資訊",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "specId": {
+                      "type": "string",
+                      "description": ""
+                    },
+                    "title": {
+                      "type": "object",
+                      "description": "",
+                      "properties": {
+                        "zh_TW": {
+                          "type": "string",
+                          "description": "繁體中文名稱"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "galleryInfo": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                  "mainId": {
+                    "type": "string",
+                    "description": "商品主圖"
+                  },
+                  "media": {
+                    "type": "array",
+                    "description": "",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "activityInfo": {
+                "type": "array",
+                "description": "此商品的活動資訊",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "plugin": {
+                      "type": "string",
+                      "description": "活動類型"
+                    },
+                    "title": {
+                      "type": "object",
+                      "description": "活動名稱",
+                      "properties": {
+                        "zh_TW": {
+                          "type": "string",
+                          "description": "繁體中文名稱"
+                        }
+                      }
+                    },
+                    "discountPrice": {
+                      "type": "number",
+                      "description": "活動折扣金額"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "paymentInfo": {
       "type": "object",
       "description": "訂單金流資訊",
