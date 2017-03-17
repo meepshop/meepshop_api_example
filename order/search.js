@@ -5,6 +5,15 @@ query.order.search = {
     ){
       data{
         id
+        userId
+        orderNo
+        userInfo{
+          name
+          email
+          mobile
+          tel
+          memberGroupId
+        }
         categories{
           products{
             productId
@@ -39,23 +48,55 @@ query.order.search = {
             }
           }
         }
-        orderNo
         paymentInfo{
           status
           price
+          list{
+            paymentId
+            template
+            name
+            description
+            price
+            paymentTime
+          }
         }
         shipmentInfo{
           status
           price
+          list{
+            shipmentId
+            template
+            name
+            description
+            price
+            number
+            shipmentTime
+            recipient{
+              email
+              name
+              mobile
+              tel
+              address{
+                country
+                postalCode
+                streetAddress
+              }
+            }
+          }
         }
-        userInfo{
-          name
-          email
-          mobile
-          tel
-          memberGroupId
+        orderRegularId
+        environment{
+          userAgent{
+            browserName
+            browserVersion
+            os
+            deviceModel
+            deviceType
+          }
+          domain
+          locale
+          currency
         }
-        status
         invoiceInfo{
           invoiceType
           invoiceTitle
@@ -66,22 +107,32 @@ query.order.search = {
           citizenDigitalCertificate
           mobileBarcode
         }
+        activityInfo{
+          plugin
+          title{
+            zh_TW
+          }
+        }
         priceInfo{
           currency
           cost
           discount
           total
           adjust
-          return
-          actualTotal
           orderDiscount
           productPrice
           productQuantity
           productDiscount
           shipmentFee
           shipmentDiscount
+          return
+          actualTotal
         }
+        status
         note
+        comment
+        createdOn
+        updatedOn
       }
       total
     }

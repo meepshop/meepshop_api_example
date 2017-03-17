@@ -7,17 +7,13 @@ query.order.schema = {
       "type": "string",
       "description": "系統訂單編號"
     },
-    "storeId": {
+    "userId": {
       "type": "string",
-      "description": "商店編號"
+      "description": "會員(購買者)編號"
     },
     "orderNo": {
       "type": "string",
       "description": "訂單編號"
-    },
-    "userId": {
-      "type": "string",
-      "description": "會員(購買者)編號"
     },
     "userInfo": {
       "type": "object",
@@ -38,6 +34,10 @@ query.order.schema = {
         "mobile": {
           "type": "string",
           "description": "會員(購買者)手機"
+        },
+        "memberGroupId": {
+          "type": "string",
+          "description": "會員群組編號(可對應商店的會員群組資料取得群組名稱)"
         }
       }
     },
@@ -177,14 +177,144 @@ query.order.schema = {
       "type": "object",
       "description": "訂單金流資訊",
       "properties": {
-
+        "price": {
+          "type": "number",
+          "description": "金流金額",
+        },
+        "status": {
+          "type": "integer",
+          "description": "金流狀態, 0:等待確認; 1:付款通知; 2:對帳完成; 3:資料有誤; 4:付款失敗; 6:退款處理",
+          "enum": [0, 1, 2, 3, 4, 6]
+        },
+        "list": {
+          "type": "array",
+          "description": "訂單的各次金流付款資訊(訂單可能會換付款方式)",
+          "items": {
+            "type": "object",
+            "properties": {
+              "paymentId": {
+                "type": "string",
+                "description": "金流系統編號"
+              },
+              "template": {
+                "type": "string",
+                "description": "金流類型, custom:自訂金流; gmo; allpay:綠界; hitrust"
+              },
+              "name": {
+                "type": "string",
+                "description": "金流的名稱"
+              },
+              "description": {
+                "type": "string",
+                "description": "金流的描述"
+              },
+              "price": {
+                "type": "number",
+                "description": "金流金額"
+              },
+              "paymentTime": {
+                "type": "integer",
+                "description": "付款時間"
+              }
+            }
+          }
+        }
       }
     },
     "shipmentInfo": {
       "type": "object",
       "description": "訂單物流資訊",
       "properties": {
-
+        "price": {
+          "type": "number",
+          "description": "物流金額",
+        },
+        "status": {
+          "type": "integer",
+          "description": "物流狀態, 0:未出貨; 1:備貨中; 2:缺貨中; 3:已出貨; 4:預購; 5:換貨處理; 6:退貨處理",
+          "enum": [0, 1, 2, 3, 4, 5, 6]
+        },
+        "list": {
+          "type": "array",
+          "description": "訂單不同的物流資訊(可能為多物流訂單)",
+          "items": {
+            "type": "object",
+            "properties": {
+              "shipmentId": {
+                "type": "string",
+                "description": "物流系統編號"
+              },
+              "template": {
+                "type": "string",
+                "description": "物流類型, custom:自訂物流; blackcat:黑貓; allpay:綠界; gmo; chunghwaPost:中華郵政"
+              },
+              "name": {
+                "type": "string",
+                "description": "物流的名稱"
+              },
+              "description": {
+                "type": "string",
+                "description": "物流的描述"
+              },
+              "price": {
+                "type": "number",
+                "description": "物流金額"
+              },
+              "number": {
+                "type": "string",
+                "description": "物流編號"
+              },
+              "shipmentTime": {
+                "type": "integer",
+                "description": "出貨時間"
+              },
+              "recipient": {
+                "type": "object",
+                "description": "此物流要送的收件人地址",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "description": "收件人的email"
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "收件人的姓名"
+                  },
+                  "mobile": {
+                    "type": "string",
+                    "description": "收件人的手機"
+                  },
+                  "tel": {
+                    "type": "string",
+                    "description": "收件人的電話"
+                  },
+                  "address": {
+                    "type": "object",
+                    "description": "收件人地址相關資料",
+                    "properties": {
+                      "country": {
+                        "type": "string",
+                        "description": "收件人所在國家",
+                      },
+                      "postalCode": {
+                        "type": "string",
+                        "description": "收件人郵遞區號",
+                      },
+                      "streetAddress": {
+                        "type": "string",
+                        "description": "收件人完整的地址(country + city + county + street)"
+                      }
+                    },
+                    "required": [
+                      "country",
+                      "streetAddress"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "orderRegularId": {
@@ -233,10 +363,6 @@ query.order.schema = {
           "currency": {
             "type": "string",
             "description": "買家所觀看的幣別(目前可使用幣別為TWD, USD, JPY, RMB, EUR, VND, KRW, HKD)"
-          },
-          "rate": {
-            "type": "number",
-            "description": "買家下訂單時所看到的匯率"
           }
         }
       }

@@ -4,26 +4,8 @@ query.order.update = {
       updateOrderList: $search
     ){
       id
-      categories{
-        products{
-          title{
-            zh_TW
-          }
-          sku
-          totalPrice
-          quantity
-          cost
-        }
-      }
+      userId
       orderNo
-      paymentInfo{
-        status
-        price
-      }
-      shipmentInfo{
-        status
-        price
-      }
       userInfo{
         name
         email
@@ -31,7 +13,89 @@ query.order.update = {
         tel
         memberGroupId
       }
-      status
+      categories{
+        products{
+          productId
+          variantId
+          title{
+            zh_TW
+          }
+          type
+          sku
+          vendorSku
+          listPrice
+          retailPrice
+          totalPrice
+          discountPrice
+          quantity
+          specs{
+            specId
+            title{
+              zh_TW
+            }
+          }
+          galleryInfo{
+            mainId
+            media
+          }
+          activityInfo{
+            plugin
+            title{
+              zh_TW
+            }
+            discountPrice
+          }
+        }
+      }
+      paymentInfo{
+        status
+        price
+        list{
+          paymentId
+          template
+          name
+          description
+          price
+          paymentTime
+        }
+      }
+      shipmentInfo{
+        status
+        price
+        list{
+          shipmentId
+          template
+          name
+          description
+          price
+          number
+          shipmentTime
+          recipient{
+            email
+            name
+            mobile
+            tel
+            address{
+              country
+              postalCode
+              streetAddress
+            }
+          }
+        }
+      }
+      orderRegularId
+      environment{
+        userAgent{
+          browserName
+          browserVersion
+          os
+          deviceModel
+          deviceType
+        }
+        domain
+        locale
+        currency
+      }
       invoiceInfo{
         invoiceType
         invoiceTitle
@@ -42,22 +106,32 @@ query.order.update = {
         citizenDigitalCertificate
         mobileBarcode
       }
+      activityInfo{
+        plugin
+        title{
+          zh_TW
+        }
+      }
       priceInfo{
         currency
         cost
         discount
         total
         adjust
-        return
-        actualTotal
         orderDiscount
         productPrice
         productQuantity
         productDiscount
         shipmentFee
         shipmentDiscount
+        return
+        actualTotal
       }
+      status
       note
+      comment
+      createdOn
+      updatedOn
       _error
     }
   }`,
