@@ -4,27 +4,9 @@ query.order.search = {
       search: $search
     ){
       data{
-        id,
-        categories{
-          products{
-            title{
-              zh_TW
-            }
-            sku
-            totalPrice
-            quantity
-            cost
-          }
-        }
+        id
+        userId
         orderNo
-        paymentInfo{
-          status
-          price
-        }
-        shipmentInfo{
-          status
-          price
-        }
         userInfo{
           name
           email
@@ -32,7 +14,89 @@ query.order.search = {
           tel
           memberGroupId
         }
-        status
+        categories{
+          products{
+            productId
+            variantId
+            title{
+              zh_TW
+            }
+            type
+            sku
+            vendorSku
+            listPrice
+            retailPrice
+            totalPrice
+            discountPrice
+            quantity
+            specs{
+              specId
+              title{
+                zh_TW
+              }
+            }
+            galleryInfo{
+              mainId
+              media
+            }
+            activityInfo{
+              plugin
+              title{
+                zh_TW
+              }
+              discountPrice
+            }
+          }
+        }
+        paymentInfo{
+          status
+          price
+          list{
+            paymentId
+            template
+            name
+            description
+            price
+            paymentTime
+          }
+        }
+        shipmentInfo{
+          status
+          price
+          list{
+            shipmentId
+            template
+            name
+            description
+            price
+            number
+            shipmentTime
+            recipient{
+              email
+              name
+              mobile
+              tel
+              address{
+                country
+                postalCode
+                streetAddress
+              }
+            }
+          }
+        }
+        orderRegularId
+        environment{
+          userAgent{
+            browserName
+            browserVersion
+            os
+            deviceModel
+            deviceType
+          }
+          domain
+          locale
+          currency
+        }
         invoiceInfo{
           invoiceType
           invoiceTitle
@@ -43,19 +107,32 @@ query.order.search = {
           citizenDigitalCertificate
           mobileBarcode
         }
+        activityInfo{
+          plugin
+          title{
+            zh_TW
+          }
+        }
         priceInfo{
           currency
-          discount
-          orderDiscount
-          productDiscountTotal
-          shipmentFee
-          total
           cost
+          discount
+          total
           adjust
+          orderDiscount
           productPrice
           productQuantity
+          productDiscount
+          shipmentFee
+          shipmentDiscount
+          return
+          actualTotal
         }
+        status
         note
+        comment
+        createdOn
+        updatedOn
       }
       total
     }

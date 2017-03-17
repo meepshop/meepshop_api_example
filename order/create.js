@@ -1,7 +1,7 @@
-query.order.update = {
-  query: `mutation M($search: [UpdateOrder]){
-    updateOrderList(
-      updateOrderList: $search
+query.order.create = {
+  query: `mutation M($search: [NewOrder]){
+    createOrderList(
+      createOrderList: $search
     ){
       id
       userId
@@ -138,9 +138,41 @@ query.order.update = {
   variables:{
     search: [
       {
-        id: 'e72bba40-04af-11e7-9639-fd1c3ec64efb',
-        shipmentInfo: {
-          status: 2
+        products:[
+          {
+            productId: "826d6ac1-0308-11e7-9485-c7f679d99137",
+            quantity: 1,
+            variantId: "826d6ac0-0308-11e7-9485-c7f679d99137"
+          }
+        ],
+        payments:[
+          {
+            paymentId: 'b2e25a76-23da-46f4-a3f6-70e30601e9fc'
+          }
+        ],
+        shipments:[
+          {
+            shipmentId: 'ac784621-a659-4977-a719-a7321f0bda02',
+            recipient: {
+              name: 'name 1',
+              tel: '02-22222222',
+              mobile: '0911111111',
+              address: {
+                country: '台灣',
+                city: '台北市',
+                county: '中正區',
+                postalCode: '',
+                streetAddress: 'test address',
+              }
+            }
+          }
+        ],
+        userId: '49a4413d-7570-472b-89d9-ec0c8b19f9a9',
+        userInfo: {
+          name: 'test2', 
+          email: 'test@meepshop.com', 
+          mobile: '0911111111', 
+          tel: '02-11111111'
         }
       }
     ]

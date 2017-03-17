@@ -21,10 +21,22 @@ query.product.schema = {
     "title": {
       "type": "object",
       "description": "商品名稱",
+      "properties": {
+        "zh_TW": {
+          "type": "string",
+          "description": "繁體商品名稱"
+        }
+      }
     },
     "description": {
       "type": "object",
-      "description": "商品描述"
+      "description": "商品描述",
+      "properties": {
+        "zh_TW": {
+          "type": "string",
+          "description": "繁體商品描述"
+        }
+      }
     },
     "galleryInfo": {
       "type": "object",
@@ -106,6 +118,12 @@ query.product.schema = {
                 "title": {
                   "type": "object",
                   "description": "規格內容名稱",
+                  "properties": {
+                    "zh_TW": {
+                      "type": "string",
+                      "description": "繁體規格內容名稱"
+                    }
+                  }
                 }
               },
               "required": [
@@ -132,8 +150,14 @@ query.product.schema = {
           },
           "title": {
             "type": "object",
-            "description": "規格名稱"
-          }
+            "description": "規格名稱",
+            "properties": {
+              "zh_TW": {
+                "type": "string",
+                "description": "繁體規格名稱"
+              }
+            }
+          },
         },
         "required": [
           "id",

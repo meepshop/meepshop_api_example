@@ -4,12 +4,35 @@ query.shipment.search = {
       search: $search
     ){
       data {
-          id,
-          title{
-            zh_TW,
-          },
-          status
+        id
+        title{
+          zh_TW
         }
+        description{
+          zh_TW
+        }
+        template
+        maxPurchase
+        minPurchase
+        priceRule{
+          method
+          fix
+          count{
+            price
+            min
+            max
+          }
+          orderAmount{
+            price
+            min
+            max
+          }
+        }
+        searchLink
+        status
+        createdOn
+        updatedOn
+      }
       total
     }
   }`,
